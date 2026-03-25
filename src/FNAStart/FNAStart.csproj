@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<OutputType Condition="'$(Configuration)' == 'Release'">WinExe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<Platforms>AnyCPU;x64</Platforms>
+		<BaseFnaLib>..\..\fnalibs</BaseFnaLib>
+		<UseCurrentRuntimeIdentifier>true</UseCurrentRuntimeIdentifier>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
+		<None Include="$(BaseFnaLib)\x86\*.dll" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+		<None Include="$(BaseFnaLib)\x64\*.dll" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+		<None Include="$(BaseFnaLib)\lib64\*.so.0" CopyToOutputDirectory="PreserveNewest">
+			<Link>%(FileName)</Link>
+		</None>
+		<None Include="$(BaseFnaLib)\lib64\*.so" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-arm64'">
+		<None Include="$(BaseFnaLib)\libaarch64\*.so.0" CopyToOutputDirectory="PreserveNewest">
+			<Link>%(FileName)</Link>
+		</None>
+		<None Include="$(BaseFnaLib)\libaarch64\*.so" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+    <ItemGroup Condition="$(RuntimeIdentifier.Contains('osx'))">
+		<None Include="$(BaseFnaLib)\osx\*.dylib" CopyToOutputDirectory="PreserveNewest">
+			<Link>$([System.Text.RegularExpressions.Regex]::Replace('%(FileName)', '\.\d+$', ''))%(Extension)</Link>
+		</None>
+	</ItemGroup>
+	<ItemGroup Condition="$(RuntimeIdentifier.Contains('ios'))">
+		<None Include="$(BaseFnaLib)\iphoneos\*.a" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup Condition="$(RuntimeIdentifier.Contains('tvos'))">
+		<None Include="$(BaseFnaLib)\appletvos\*.a" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\FNA\FNA.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Content\*" CopyToOutputDirectory="PreserveNewest" />
+		<Content Remove="Content\.gitkeep"/>
+	</ItemGroup>
+</Project>
