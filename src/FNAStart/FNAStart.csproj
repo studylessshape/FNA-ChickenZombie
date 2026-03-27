@@ -10,6 +10,7 @@
 		<Platforms>AnyCPU;x64</Platforms>
 		<BaseFnaLib>..\..\fnalibs</BaseFnaLib>
 		<UseCurrentRuntimeIdentifier>true</UseCurrentRuntimeIdentifier>
+		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
 		<None Include="$(BaseFnaLib)\x86\*.dll" CopyToOutputDirectory="PreserveNewest" />

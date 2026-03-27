@@ -58,7 +58,7 @@ namespace FNAStart.Engine
             timerShake.Restart();
         }
 
-        public void RenderTexture(Texture2D? texture, Rectangle srcRect, Rectangle dstRect, float angleDegrees, Vector2 center)
+        public void RenderTexture(Texture2D? texture, Rectangle? srcRect, Rectangle dstRect, float angleDegrees, Vector2 center)
         {
             var screenDst = new Rectangle(
                 dstRect.X - (int)position.X,
