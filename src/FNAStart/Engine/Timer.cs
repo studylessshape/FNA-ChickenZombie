@@ -1,6 +1,6 @@
 using System;
 
-namespace FNAStart
+namespace FNAStart.Engine
 {
     public class Timer
     {

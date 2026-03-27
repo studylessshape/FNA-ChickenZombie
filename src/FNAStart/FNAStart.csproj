@@ -45,6 +45,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Content\*" CopyToOutputDirectory="PreserveNewest" />
-		<Content Remove="Content\.gitkeep"/>
+		<Content Remove="Content\.gitkeep" />
 	</ItemGroup>
 </Project>
