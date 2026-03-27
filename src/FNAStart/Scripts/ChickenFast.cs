@@ -7,9 +7,10 @@ namespace FNAStart.Scripts
     {
         public static Atlas AtlasChickenFast;
 
-        public ChickenFast(Atlas atlasExplosion, SoundEffect soundExplosion)
-            : base(atlasExplosion, soundExplosion, AtlasChickenFast)
+        public ChickenFast() : base()
         {
+            animationRun.AddFrame(AtlasChickenFast);
+
             speedRun = 80.0f;
         }
     }
