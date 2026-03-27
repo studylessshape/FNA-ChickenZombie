@@ -105,12 +105,12 @@ namespace FNAStart.Engine
             }
         }
 
-        public void OnUpdate(float delta)
+        public void Update(float delta)
         {
             timer.Update(delta);
         }
 
-        public void OnRender(Camera camera)
+        public void Render(Camera camera)
         {
             var frame = frameList[indexFrame];
             var posCamera = camera.Position;
