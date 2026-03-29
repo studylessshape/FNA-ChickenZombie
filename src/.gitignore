@@ -854,7 +854,3 @@ FodyWeavers.xsd
 .msm
 .msp
 *.user
-
-*/Content/**
-!Content/.gitkeep
-!Content/Readme.md

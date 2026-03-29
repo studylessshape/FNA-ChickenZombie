@@ -8,7 +8,7 @@
   </Folder>
   <Project Path="../reference/FNA/FNA.Core.csproj" />
   <Project Path="../reference/FontStashSharp/src/XNA/FontStashSharp.FNA.Core.csproj" />
-  <Project Path="FNAStart/FNAStart.csproj">
+  <Project Path="ChickenZombie/ChickenZombie.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
 </Solution>
