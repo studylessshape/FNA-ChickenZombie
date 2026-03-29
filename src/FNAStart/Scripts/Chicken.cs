@@ -49,7 +49,7 @@ namespace FNAStart.Scripts
             }
 
             animationCurrent = IsAlive ? animationRun : animationExplosion;
-            animationRun.Position = position;
+            animationCurrent.Position = position;
             animationCurrent.Update(delta);
         }
 

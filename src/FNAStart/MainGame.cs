@@ -59,7 +59,7 @@ namespace FNAStart
         Vector2 posCrosshair;                          // 准星位置
         float angleBarrel = 0;                         // 炮管旋转角度
         readonly Vector2 posBattery = new(640, 600);   // 炮台基座中心位置
-        readonly Vector2 posBarrel = new(592, 585);    // 炮台无旋转默认位置
+        readonly Vector2 posBarrel = new(640, 585);    // 炮台无旋转默认位置
         readonly Vector2 centerBarrel = new(48, 25);   // 炮管旋转中心坐标
 
         bool isCoolDown = true;                        // 是否冷却结束
@@ -72,16 +72,18 @@ namespace FNAStart
         {
             Currnet = this;
 
-            new GraphicsDeviceManager(this);
+            var graphicsDeviceManager = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = 1280,
+                PreferredBackBufferHeight = 720
+            };
+
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-
-            Window.BeginScreenDeviceChange(false);
-            Window.EndScreenDeviceChange(Window.ScreenDeviceName, 1280, 720);
 
             camera = new Camera(GraphicsDevice);
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -97,6 +99,7 @@ namespace FNAStart
             animationBarrelFire.IsLoop = false;
             animationBarrelFire.SetInterval(0.04f);
             animationBarrelFire.Center = centerBarrel;
+            animationBarrelFire.Position = new Vector2(764, 610);
             animationBarrelFire.AddFrame(atlasBarrelFire);
             animationBarrelFire.OnFinished += () => isCoolDown = true;
 
@@ -350,18 +353,6 @@ namespace FNAStart
                 animationBarrelFire.Render(camera);
             }
 
-            spriteBatch.Begin();
-            int widthHeart = textureHeart.Width;
-            int heightHeart = textureHeart.Height;
-            for (int i = 0; i < heightHeart; i++)
-            {
-                var rectDst = new Rectangle(15 + (widthHeart + 10) * i, 15, widthHeart, heightHeart);
-                spriteBatch.Draw(textureHeart, rectDst, Color.White);
-            }
-
-            spriteBatch.DrawString(font, $"SCORE: {score}", new Vector2(15, 50), Color.White);
-            spriteBatch.End();
-
             int widthCrosshair = textureCrosshair.Width;
             int heightCrosshair = textureCrosshair.Height;
             var rectCrosshair = new Rectangle(
@@ -371,6 +362,18 @@ namespace FNAStart
                 heightCrosshair);
             camera.RenderTexture(textureCrosshair, null, rectCrosshair, 0, Vector2.Zero);
             camera.EndRender();
+
+            spriteBatch.Begin();
+            int widthHeart = textureHeart.Width;
+            int heightHeart = textureHeart.Height;
+            for (int i = 0; i < hp; i++)
+            {
+                var rectDst = new Rectangle(15 + (widthHeart + 10) * i, 15, widthHeart, heightHeart);
+                spriteBatch.Draw(textureHeart, rectDst, Color.White);
+            }
+            var scoreStr = $"SCORE: {score}";
+            spriteBatch.DrawString(font, scoreStr, new Vector2(1280 - (scoreStr.Length - 1) * 15, 8), Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

@@ -113,7 +113,6 @@ namespace FNAStart.Engine
         public void Render(Camera camera)
         {
             var frame = frameList[indexFrame];
-            var posCamera = camera.Position;
 
             var dstRect = new Rectangle()
             {
