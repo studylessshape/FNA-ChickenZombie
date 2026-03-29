@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http.Headers;
 
 namespace FNAStart
 {
@@ -18,14 +17,14 @@ namespace FNAStart
         public static Game Currnet { get; private set; } = null!;
 
         #region Resources
-        Camera camera;
+        Camera camera = null!;
 
-        Texture2D textureHeart;                        // 生命值图标纹理
-        Texture2D textureBullet;                       // 子弹纹理
-        Texture2D textureBattery;                      // 炮台基座纹理
-        Texture2D textureCrosshair;                    // 光标准星纹理
-        Texture2D textureBackground;                   // 背景图纹理
-        Texture2D textureBarrelIdle;                   // 炮管默认状态纹理
+        Texture2D textureHeart = null!;                // 生命值图标纹理
+        Texture2D textureBullet = null!;               // 子弹纹理
+        Texture2D textureBattery = null!;              // 炮台基座纹理
+        Texture2D textureCrosshair = null!;            // 光标准星纹理
+        Texture2D textureBackground = null!;           // 背景图纹理
+        Texture2D textureBarrelIdle = null!;           // 炮管默认状态纹理
 
         Atlas atlasBarrelFire = new();                 // 炮管开火动画图集
         Atlas atlasChickenFast = new();                // 快速僵尸鸡动画图集
@@ -33,17 +32,17 @@ namespace FNAStart
         Atlas atlasChikenSlow = new();                 // 慢速僵尸鸡动画图集
         Atlas atlasExplosion = new();                  // 僵尸鸡死亡爆炸动画图集
 
-        Song musicBgm;                                 // 背景音乐
-        Song musicLoss;                                // 游戏失败音乐
+        Song musicBgm = null!;                         // 背景音乐
+        Song musicLoss = null!;                        // 游戏失败音乐
 
-        SoundEffect soundHurt;                         // 生命值降低音效
-        SoundEffect soundFire1;                        // 开火音效1
-        SoundEffect soundFire2;                        // 开火音效2
-        SoundEffect soundFire3;                        // 开火音效3
-        SoundEffect soundExplosion;                    // 僵尸鸡死亡爆炸音效
+        SoundEffect soundHurt = null!;                 // 生命值降低音效
+        SoundEffect soundFire1 = null!;                // 开火音效1
+        SoundEffect soundFire2 = null!;                // 开火音效2
+        SoundEffect soundFire3 = null!;                // 开火音效3
+        SoundEffect soundExplosion = null!;            // 僵尸鸡死亡爆炸音效
 
-        FontSystem fontSystem;                         // 字体系统
-        SpriteFontBase font;                           // 得分字体文件
+        FontSystem fontSystem = null!;                 // 字体系统
+        SpriteFontBase font = null!;                   // 得分字体文件
         #endregion
 
         #region GameStatus
@@ -65,7 +64,7 @@ namespace FNAStart
         bool isCoolDown = true;                        // 是否冷却结束
         bool isFireKeyDown = false;                    // 开火键是否按下
         Animation animationBarrelFire = new();         // 炮管开火动画
-        SpriteBatch spriteBatch;
+        SpriteBatch spriteBatch = null!;
         #endregion
 
         public MainGame()
