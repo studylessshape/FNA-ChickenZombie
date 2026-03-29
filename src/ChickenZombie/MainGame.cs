@@ -59,7 +59,7 @@ namespace FNAStart
         Vector2 posCrosshair;                          // 准星位置
         float angleBarrel = 0;                         // 炮管旋转角度
         readonly Vector2 posBattery = new(640, 600);   // 炮台基座中心位置
-        readonly Vector2 posBarrel = new(640, 585);    // 炮台无旋转默认位置
+        readonly Vector2 posBarrel = new(640, 610);    // 炮台无旋转默认位置
         readonly Vector2 centerBarrel = new(48, 25);   // 炮管旋转中心坐标
 
         bool isCoolDown = true;                        // 是否冷却结束
@@ -99,7 +99,7 @@ namespace FNAStart
             animationBarrelFire.IsLoop = false;
             animationBarrelFire.SetInterval(0.04f);
             animationBarrelFire.Center = centerBarrel;
-            animationBarrelFire.Position = new Vector2(764, 610);
+            animationBarrelFire.Position = new Vector2(764, 635);
             animationBarrelFire.AddFrame(atlasBarrelFire);
             animationBarrelFire.OnFinished += () => isCoolDown = true;
 
@@ -190,7 +190,7 @@ namespace FNAStart
             var curMouseState = Mouse.GetState();
             posCrosshair.X = curMouseState.X;
             posCrosshair.Y = curMouseState.Y;
-            var barrelDirection = posCrosshair - posBattery;
+            var barrelDirection = posCrosshair - posBarrel;
             angleBarrel = MathHelper.ToDegrees(MathF.Atan2(barrelDirection.Y, barrelDirection.X));
 
             isFireKeyDown = curMouseState.LeftButton == ButtonState.Pressed;
