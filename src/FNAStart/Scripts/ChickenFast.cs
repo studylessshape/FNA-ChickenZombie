@@ -1,5 +1,4 @@
 using FNAStart.Engine;
-using Microsoft.Xna.Framework.Audio;
 
 namespace FNAStart.Scripts
 {

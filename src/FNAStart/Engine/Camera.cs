@@ -58,6 +58,11 @@ namespace FNAStart.Engine
             timerShake.Restart();
         }
 
+        public void BeginRender()
+        {
+            spriteBatch.Begin();
+        }
+
         public void RenderTexture(Texture2D? texture, Rectangle? srcRect, Rectangle dstRect, float angleDegrees, Vector2 center)
         {
             var screenDst = new Rectangle(
@@ -67,7 +72,6 @@ namespace FNAStart.Engine
                 dstRect.Height
             );
 
-            spriteBatch.Begin();
             spriteBatch.Draw(
                 texture,
                 screenDst,
@@ -78,6 +82,10 @@ namespace FNAStart.Engine
                 SpriteEffects.None,
                 0f
             );
+        }
+
+        public void EndRender()
+        {
             spriteBatch.End();
         }
     }

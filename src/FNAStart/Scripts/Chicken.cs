@@ -53,6 +53,11 @@ namespace FNAStart.Scripts
             animationCurrent.Update(delta);
         }
 
+        public void Render(Camera camera)
+        {
+            animationCurrent.Render(camera);
+        }
+
         public void Hurt()
         {
             IsAlive = false;

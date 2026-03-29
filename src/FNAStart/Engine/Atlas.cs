@@ -7,23 +7,22 @@ namespace FNAStart.Engine
 {
     public class Atlas : IDisposable
     {
-        private readonly ContentManager contentManager;
+        private ContentManager Content => MainGame.Currnet.Content;
 
         private List<Texture2D> textureList = [];
         private bool disposedValue;
 
-        public Atlas(ContentManager contentManager)
+        public Atlas()
         {
-            this.contentManager = contentManager;
         }
 
         public int Count => textureList.Count;
 
-        public void Load(string pathPrefix, int num)
+        public void Load(string pathTemplate, int num)
         {
             for (int i = 0; i < num; i++)
             {
-                var texture = contentManager.Load<Texture2D>(pathPrefix + (i + 1));
+                var texture = Content.Load<Texture2D>(string.Format(pathTemplate, i + 1));
                 textureList.Add(texture);
             }
         }

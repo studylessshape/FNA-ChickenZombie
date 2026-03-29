@@ -1,2 +1,3 @@
 fnalibs/**
 !fnalibs/Readme.md
+/src/FNA/obj_core

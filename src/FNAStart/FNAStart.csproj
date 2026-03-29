@@ -42,10 +42,11 @@
 		<None Include="$(BaseFnaLib)\appletvos\*.a" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\FNA\FNA.Core.csproj" />
-	</ItemGroup>
-	<ItemGroup>
 		<Content Include="Content\*" CopyToOutputDirectory="PreserveNewest" />
 		<Content Remove="Content\.gitkeep" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\reference\FNA\FNA.Core.csproj" />
+	  <ProjectReference Include="..\..\reference\FontStashSharp\src\XNA\FontStashSharp.FNA.Core.csproj" />
 	</ItemGroup>
 </Project>

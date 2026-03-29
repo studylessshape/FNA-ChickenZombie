@@ -6,9 +6,8 @@
   <Folder Name="/SolutionItems/">
     <File Path=".gitignore" />
   </Folder>
-  <Project Path="FNA/FNA.Core.csproj">
-    <Platform Solution="Debug|x64" Project="x64" />
-  </Project>
+  <Project Path="../reference/FNA/FNA.Core.csproj" />
+  <Project Path="../reference/FontStashSharp/src/XNA/FontStashSharp.FNA.Core.csproj" />
   <Project Path="FNAStart/FNAStart.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
