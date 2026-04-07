@@ -33,6 +33,6 @@ See [FNA-template/Readme.md](https://github.com/studylessshape/FNA-template/blob
 
 1. Use `GraphicsDeviceManager` to set the window size;
 2. Render texture by [Camera](./src/ChickenZombie/Engine/Camera.cs) use int and not has float;
-3. Some coordinate is different with Voidmatrix's version;
+3. Some coordinates are different with Voidmatrix's version;
 4. Render camera first and other second because can't call `SpriteBatch.Begin()` twice;
 5. ~~I didn't write some of the notes.~~
